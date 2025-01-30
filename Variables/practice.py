@@ -14,4 +14,4 @@ school_name= "UCAS"
 
 year_born= "2010"
 
-print(name,"was born",year_born,"Has had",breakfast,"for breakfast and like the color",favorite_color,"")
+print(name,"was born",year_born,"Has had",breakfast,"for breakfast and like the color",favorite_color,"Goes to", school_name)
