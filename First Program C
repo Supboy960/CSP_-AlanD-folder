@@ -1,11 +1,12 @@
 #include <stdio.h>
 
-char name;
+
 
 int main(void){
 
+    char name[30];
     printf("What is your name: ");
-    scanf("hi name");
-    printf("Hi %s", &name);
+    scanf("%s", name);
+    printf("Hi %s", name);
     return 0;
 }
