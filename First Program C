@@ -1,3 +1,4 @@
+// Alan De Lara, Variables notes C
 #include <stdio.h>
 
 char name;
