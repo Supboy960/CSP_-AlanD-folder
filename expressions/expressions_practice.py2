@@ -12,5 +12,5 @@ var_seven = (3 * 5**2 / 15) - (5 - 2**2)
 var_eight = (1**4 * 2**2 + 3**3) - 2**5 / 4
 var_nine = (22 / 2 - 2 * 5)**2 + (4 - 6 / 6)**2
  
-print(var_one, var_two, var_three, var_four, var_five, var_six, var_seven, var_eight, var_nine)
+print(int(var_one), int(var_two), int(var_three), int(var_four), int(var_five), int(var_six), int(var_seven), int(var_eight), int(var_nine))
  
