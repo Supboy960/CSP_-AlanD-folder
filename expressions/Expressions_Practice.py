@@ -1,4 +1,4 @@
-#Alan De Lara, Expressions practice Python
+#Alan De Lara, Expressions practice py
 #1
 print(7 - 24 / 8 * 4 + 6)
 #2
