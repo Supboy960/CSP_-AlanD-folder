@@ -10,7 +10,9 @@ int var_four = (17 - 6 / 2) + 4 * 3;
 int var_five = -2*(1*4-2/2)+(6+2-3);
 int var_six = -1 * ((3 - 4 * 7) / 5) - 2 * 24 / 6;
 int var_seven = (3*pow(5,2) / 15) - (5 - pow(2,2));
+int var_eight = (pow(1,4)*pow(2,2) + pow(3,3)) - pow(2,5) / 4;
+int var_nine = pow((22 / 2 - 2 * 5),2) + pow((4 - 6 / 6),2);
 int main(void) {  
-printf("%d,%d,%d,%d,%d,%d,%d", var_one, var_two, var_three, var_four, var_five, var_six, var_seven);  
+printf("%d,%d,%d,%d,%d,%d,%d,%d,%d", var_one, var_two, var_three, var_four, var_five, var_six, var_seven, var_eight, var_nine);  
 return 0;  
 }  
