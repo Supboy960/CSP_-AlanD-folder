@@ -15,7 +15,7 @@ transportation = float (input ("what is your transportation?\n"))
 #calulate savings as 10% of income(income*.1) (variable)
 savings = (income/10)
 #Calualte spening as income-saving-rent-utilites-grocries-transpotation (variable)
-spending = (income-(rent-utilities-groceries-transportation))
+spending = (income-(rent+utilities+groceries+transportation))
 #calulate percent income of rent (rent/income *100) (varible)\
 percent_of_rent = (rent/income *100)
 #calulate percent income of untilaiyes (utilalies/income *100) (varible)
@@ -37,6 +37,6 @@ print("You spend", transportation, "on transportation and that is",percent_of_tr
 #Your savings is $XX.XX which is XX% of income. (print)
 savings_percentage = (savings/income*100)
 #Your spending is $XX.XX which is XX% of income. (print)
-print("You save",savings, "which is",savings_percentage,"percent of saving of income")
+print("You save",round(savings, 2), "which is",savings_percentage,"percent of saving of income")
 
 print("You have",spending,"which is",percent_of_spending,"percent of spending of income")
