@@ -13,27 +13,30 @@ groceries = float (input ("what is your groceries?\n"))
 #ask what their transportation is (varible an inputs)
 transportation = float (input ("what is your transportation?\n"))
 #calulate savings as 10% of income(income*.1) (variable)
-savings = income/10
+savings = (income/10)
 #Calualte spening as income-saving-rent-utilites-grocries-transpotation (variable)
-spending = income-rent-utilities-groceries-transportation
+spending = (income-(rent-utilities-groceries-transportation))
 #calulate percent income of rent (rent/income *100) (varible)\
-percent_of_rent = rent/income *100
+percent_of_rent = (rent/income *100)
 #calulate percent income of untilaiyes (utilalies/income *100) (varible)
-percent_of_utilities = utilities/income *100
+percent_of_utilities = (utilities/income *100)
 #calulate percent income of gorceries (gorceries/income *100) (varible)
-percent_of_groceries = groceries/income *100
+percent_of_groceries = (groceries/income *100)
 ##calulate percent income of transportation (tansportation/income *100) (varible)
-percent_of_transportation = transportation/income *100
+percent_of_transportation = (transportation/income *100)
 #calulate percent income of spending (spending/income *100) (varible)
-percent_of_spending = spending/income *100
+percent_of_spending=(spending/income *100)
 #Your rent is $XX.XX which is XX% of income. (print)
-print("You spend", rent "on rent and that is",percent_of_rent )
+print("You spend", rent, "which is",percent_of_rent,"percent of rent of income")
 #Your untilyes is $XX.XX which is XX% of income. (print)
-
+print("You spend", utilities, "on utilities and that is",percent_of_utilities)
 #Your grociers is $XX.XX which is XX% of income. (print)
-
+print("You spend", groceries, "on groceries and that is",percent_of_groceries)
 #Your transportation is $XX.XX which is XX% of income. (print)
-
+print("You spend", transportation, "on transportation and that is",percent_of_transportation)
 #Your savings is $XX.XX which is XX% of income. (print)
-
+savings_percentage = (savings/income*100)
 #Your spending is $XX.XX which is XX% of income. (print)
+print("You save",savings, "which is",savings_percentage,"percent of saving of income")
+
+print("You have",spending,"which is",percent_of_spending,"percent of spending of income")
