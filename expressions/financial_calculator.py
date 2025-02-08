@@ -1,7 +1,7 @@
 # Alan De Lara, Financial Calculator python 
 
 # print statment the welcomes user and tells what progame does
-
+print("Welcome to the Financial Calculator! This program will help you analyze your income and expenses.")
 #ask what their income is (varible an inputs)
 income = float (input ("what is your income?\n"))
 #ask what their rent is (varible an inputs)
@@ -27,16 +27,17 @@ percent_of_transportation = (transportation/income *100)
 #calulate percent income of spending (spending/income *100) (varible)
 percent_of_spending=(spending/income *100)
 #Your rent is $XX.XX which is XX% of income. (print)
-print("You spend", rent, "which is",percent_of_rent,"percent of rent of income")
+print("Your rent is $%.2f which is %.2f%% of your income." % (rent, percent_of_rent))
 #Your untilyes is $XX.XX which is XX% of income. (print)
-print("You spend", utilities, "on utilities and that is",percent_of_utilities)
+print("Your utilities are $%.2f which is %.2f%% of your income." % (utilities, percent_of_utilities))
 #Your grociers is $XX.XX which is XX% of income. (print)
-print("You spend", groceries, "on groceries and that is",percent_of_groceries)
+print("Your groceries are $%.2f which is %.2f%% of your income." % (groceries, percent_of_groceries))
 #Your transportation is $XX.XX which is XX% of income. (print)
-print("You spend", transportation, "on transportation and that is",percent_of_transportation)
+print("Your transportation is $%.2f which is %.2f%% of your income." % (transportation, percent_of_transportation))
 #Your savings is $XX.XX which is XX% of income. (print)
 savings_percentage = (savings/income*100)
 #Your spending is $XX.XX which is XX% of income. (print)
-print("You save",round(savings, 2), "which is",savings_percentage,"percent of saving of income")
+print("Your savings is $%.2f which is %.2f%% of your income." % (savings, savings_percentage))  
 
-print("You have",spending,"which is",percent_of_spending,"percent of spending of income")
+print("Your spending is $%.2f which is %.2f%% of your income." % (spending, percent_of_spending))
+
