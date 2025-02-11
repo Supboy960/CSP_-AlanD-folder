@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "Expressions_Practice.C": "cpp"
+        "Expressions_Practice.C": "cpp",
+        "stdio.h": "c"
     }
 }
