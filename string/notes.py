@@ -2,13 +2,18 @@
 
 #string is a data type that hold any info surrounded by qoutation marks "" ''
 
-note= "Alan's class" #yes string
+#note= "Alan's class" #yes string
 
-#name = input("What is your first name?").strip().capitalize()
+#name = input("What is your first name?"\n).strip().capitalize()
 
 #print(f"Hello {name} well come to my program\n")
 
-print(note)
+#print("this it you name"+ name)
 
-sentace = "the quick brown fox jumps over the lazy dog"
+sentence = "the quick brown fox jumps over the lazy dog."
 
+#print(len(sentace))
+#print(sentence[4])
+start = sentence.find("brown")
+length = len("brown fox") 
+print(sentence[start:start+length])
