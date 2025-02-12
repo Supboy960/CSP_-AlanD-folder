@@ -9,6 +9,7 @@ char name[]= "";
 
 
 int main(void){
+printf("What is your name?\n");
 char one[]= "(: (:";
 char two[]= "World!";
 char three[]= ":) :)";
