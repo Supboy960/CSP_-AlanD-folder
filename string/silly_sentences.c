@@ -32,7 +32,7 @@ scanf("%s", animal);
     //pint out the stor whit the varibales inserted (" weclome %s to may prgeam",  name) One print atament
 
 
-printf("%s%s%s%s%s%s","It was a", time, "when the", vehicle, "came to pick me up for",location, " The ride was", speed, "and along the way I saw a",color, animal );
+printf("%s%s%s%s%s%s","It was ", time, " when the ", vehicle, " came to pick me up for ", location, " The ride was ", speed, " and along the way I saw a ",color, animal );
 printf("%s","Hope you have a wonderful day and try this code agian,",name);
     return 0;
 }
