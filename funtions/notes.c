@@ -1,14 +1,12 @@
 //Alan De Lara. Funtion Notes
 #include <stdio.h>
-int num
+int num;
 char name[50], place[50], verb[50];
 int add(int numOne, int numTwo){
-     return numOne+numTwo
+     return numOne+numTwo;
 }
-const char* word (type){
-    char choice [50]
-    printf("please give me a %s:\n", type);
-    sacnf("%s", choise );
+void due(char assigment[50], char day[20]){
+    printf("the %s assigmnet is due %s\n", assigment, day);
 }
 int main(void){
     //printf("Please tell me a number:\n");
@@ -16,6 +14,9 @@ int main(void){
     //add(num,10);
     //add(8,1);
     //add(4,85);
+due ("funtions notes, Today");
+due ("Hello world Update,  due tommorow");
+due ("fanceil caltor Update, due friday");
 
     return 0;
 }
