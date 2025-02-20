@@ -2,10 +2,12 @@
 
 
 
-subject = input("What's your favorite suject: ")
+def Hello(name):
+    print("Hello", name)
 
-small_number = 4
 
-name=  input ("what is you name:")
-
-print(name, "really likes", subject)
+Hello("Ms.LaRose")
+Hello("Gabe")
+Hello("Anthony")
+Hello("Alan")
+Hello("Douglas")
