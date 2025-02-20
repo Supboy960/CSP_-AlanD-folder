@@ -2,6 +2,7 @@
     "files.associations": {
         "Expressions_Practice.C": "cpp",
         "stdio.h": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "update_your_financial_calculator.C": "cpp"
     }
 }
