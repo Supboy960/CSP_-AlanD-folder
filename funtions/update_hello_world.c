@@ -1,7 +1,7 @@
 //Alan De Lara, Update for C
 #include <stdio.h>
 
-void hello(char name[50]){
+void hello(char name[60]){
     printf("Hello %s\n", name);
 }
 
