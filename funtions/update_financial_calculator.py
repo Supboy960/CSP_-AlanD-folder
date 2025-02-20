@@ -8,7 +8,7 @@ def info(cost, income, type ):
 print("Welcome to the Financial Calculator! This program will help you analyze your income and expenses.")
 
 def collecting_data(type):
-    return input(f"What is your monthly {type}:\n")
+    return input(f"What is your monthly {type}")
     
 def collect_inputs():  
     income = float(collecting_data("income"))  
@@ -19,11 +19,11 @@ def collect_inputs():
     return income, rent, utilities, groceries, transportation  
 
 
-income = float(collecting_data(("What is your monthly income:\n")))
-rent = float(collecting_data(("What is your monthly rent:\n")))
-utilities = float(collecting_data(("What is your monthly utilities:\n")))
-groceries = float(collecting_data(("What is your monthly groceries:\n")))
-transportation = float(collecting_data(("What is your monthly transportation:\n")))
+income = float(collecting_data("income:\n"))
+rent = float(collecting_data("rent:\n"))
+utilities = float(collecting_data("utilities:\n"))
+groceries = float(collecting_data("groceries:\n"))
+transportation = float(collecting_data("transportation:\n"))
 
 savings = income*0.1
 
