@@ -24,12 +24,17 @@ int main(void){
     float savings = income * 0.1;  
     float spending = income - (rent + utilities + groceries + transportation + savings);  
   
-    float percent_of_rent = (rent / income) * 100;  
+    f
      
   
+    void display(float cost, float income, const char* type) {  
+        float percent = (cost / income) * 100;  
+        printf("Your %s is $%.2f, which is %.2f%% of your income.\n", type, cost, percent);  
+    }
     
-  
-    float percent_of_utilities = (utilities / income) * 100;  
+
+    float percent_of_rent = (rent / income) * 100;   
+float percent_of_utilities = display(utilities, income, "utilities");
 float percent_of_groceries = (groceries / income) * 100;  
 float percent_of_transportation = (transportation / income) * 100;  
 float percent_of_savings = (savings / income) * 100;
