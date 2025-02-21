@@ -2,12 +2,15 @@
 
 #include <stdio.h>  
   
-void inputs(char type[20], float *input){   
-    printf("What is your monthly %s cost:\n", type);  
-    scanf("%f", input);   
+float inputs(char type[20]){   
+    printf("What is your monthly %s cost:\n", type);   
 }  
+float display(float cost, float income, const char* type) {  
+    float percent = (cost / income) * 100;  
+    printf("Your %s is $%.2f, which is %.2f%% of your income.\n", type, cost, percent);  
+}
   
-float income;  
+ 
 float utilities;  
 float groceries;  
 float transportation;  
@@ -15,11 +18,16 @@ float rent;
 int main(void){  
     printf("Welcome to the Financial Calculator! This program will help you analyze your income and expenses.\n");  
   
-    inputs("income", &income);  
-    inputs("rent", &rent);  
-    inputs("utilities", &utilities);  
-    inputs("groceries", &groceries);  
-    inputs("transportation", &transportation);  
+    float income = inputs("income"); // do this with the others
+    scanf("%f", &income); 
+    inputs("rent");  
+    scanf("%f", &rent);
+    inputs("utilities");  
+    scanf("%f", &utilities);
+    inputs("groceries");  
+    scanf("%f", &groceries);
+    inputs("transportation");  
+    scanf("%f", &transportation);
   
     float savings = income * 0.1;  
     float spending = income - (rent + utilities + groceries + transportation + savings);  
@@ -27,10 +35,7 @@ int main(void){
     
      
   
-    void display(float cost, float income, const char* type) {  
-        float percent = (cost / income) * 100;  
-        printf("Your %s is $%.2f, which is %.2f%% of your income.\n", type, cost, percent);  
-    }
+
     
 
 float percent_of_rent = display(rent, income, "rent");  
@@ -40,7 +45,7 @@ float percent_of_transportation = display(transportation, income, "transportatio
 float percent_of_savings = display(savings, income, "savings");
 float  percent_of_spending = display(spending, income, "spending");
  
-printf("Your rent is $%.2f which is %.2f%% of your income.\n", rent, percent_of_rent);  
+printf("Your rent is $%.2f which is %.2f%% of your income.\n", rent, per);  
 printf("Your utilities are $%.2f which is %.2f%% of your income.\n", utilities, percent_of_utilities);  
 printf("Your groceries are $%.2f which is %.2f%% of your income.\n", groceries, percent_of_groceries);  
 printf("Your transportation is $%.2f which is %.2f%% of your income.\n", transportation, percent_of_transportation);  
