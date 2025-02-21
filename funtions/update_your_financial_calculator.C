@@ -33,7 +33,7 @@ int main(void){
     }
     
 
-    float percent_of_rent = (rent / income) * 100;   
+float percent_of_rent = (rent / income) * 100;   
 float percent_of_utilities = display(utilities, income, "utilities");
 float percent_of_groceries = (groceries / income) * 100;  
 float percent_of_transportation = (transportation / income) * 100;  
