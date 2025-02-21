@@ -11,22 +11,20 @@ float display(float cost, float income, const char* type) {
 }
   
  
-float utilities;  
-float groceries;  
-float transportation;  
-float rent; 
+ 
+
 int main(void){  
     printf("Welcome to the Financial Calculator! This program will help you analyze your income and expenses.\n");  
   
     float income = inputs("income"); // do this with the others
     scanf("%f", &income); 
-    inputs("rent");  
+    float rent = inputs("rent");  
     scanf("%f", &rent);
-    inputs("utilities");  
+    float utilities = inputs("utilities");  
     scanf("%f", &utilities);
-    inputs("groceries");  
+    float groceries = inputs("groceries");  
     scanf("%f", &groceries);
-    inputs("transportation");  
+    float transportation = inputs("transportation");  
     scanf("%f", &transportation);
   
     float savings = income * 0.1;  
