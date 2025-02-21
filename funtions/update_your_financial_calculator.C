@@ -24,7 +24,7 @@ int main(void){
     float savings = income * 0.1;  
     float spending = income - (rent + utilities + groceries + transportation + savings);  
   
-    f
+    
      
   
     void display(float cost, float income, const char* type) {  
