@@ -1,40 +1,50 @@
 //Alan De Lara, Update Financial Calculator - C
 
-#include <stdio.h>
-
-float inputs(char type[20], int input[50]){
-    printf("What is your monthly %s cost:\n", type);
-    scanf("%f", &input);
-    return;
-}
-
-float income;
-float utilities;
-float groceries;
-float transportation;
-
-
-int main(void){
+#include <stdio.h>  
+  
+void inputs(char type[20], float *input){   
+    printf("What is your monthly %s cost:\n", type);  
+    scanf("%f", input);   
+}  
+  
+float income;  
+float utilities;  
+float groceries;  
+float transportation;  
+float rent; 
+int main(void){  
+    printf("Welcome to the Financial Calculator! This program will help you analyze your income and expenses.\n");  
+  
+    inputs("income", &income);  
+    inputs("rent", &rent);  
+    inputs("utilities", &utilities);  
+    inputs("groceries", &groceries);  
+    inputs("transportation", &transportation);  
+  
+    float savings = income * 0.1;  
+    float spending = income - (rent + utilities + groceries + transportation + savings);  
+  
+    float percent_of_rent = (rent / income) * 100;  
+     
+  
     
-printf("Welcome to the Financial Calculator! This program will help you analyze your income and expenses."\n);
-printf("What is your monthly income:\n");
-scanf("%f", income);
-printf("What is your monthly utilities:\n");
-scanf("%f", utilities);
-printf("What is your monthly groceries:\n");
-scanf("%f", groceries);
-printf("What is your monthly transportation:\n");
-scanf("%f", transportation);
+  
+    float percent_of_utilities = (utilities / income) * 100;  
+float percent_of_groceries = (groceries / income) * 100;  
+float percent_of_transportation = (transportation / income) * 100;  
+float percent_of_savings = (savings / income) * 100;
+float  percent_of_spending = (spending / income) * 100;
+ 
+printf("Your rent is $%.2f which is %.2f%% of your income.\n", rent, percent_of_rent);  
+printf("Your utilities are $%.2f which is %.2f%% of your income.\n", utilities, percent_of_utilities);  
+printf("Your groceries are $%.2f which is %.2f%% of your income.\n", groceries, percent_of_groceries);  
+printf("Your transportation is $%.2f which is %.2f%% of your income.\n", transportation, percent_of_transportation);  
+printf("Your savings is $%.2f which is %.2f%% of your income.\n", savings, percent_of_savings);
+printf("Your spending is $%.2f which is %.2f%% of your income.\n", spending, percent_of_spending);
 
+    
+    
+    
+    return 0;  
 
-float rent = inputs("rent", 0);
-float rent = inputs("rent", 0);
-
-
-
-
-
-
-
-    return 0;
-}
+}  
