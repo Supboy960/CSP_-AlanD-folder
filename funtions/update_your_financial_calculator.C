@@ -33,12 +33,12 @@ int main(void){
     }
     
 
-float percent_of_rent = (rent / income) * 100;   
+float percent_of_rent = display(rent, income, "rent");  
 float percent_of_utilities = display(utilities, income, "utilities");
-float percent_of_groceries = (groceries / income) * 100;  
-float percent_of_transportation = (transportation / income) * 100;  
-float percent_of_savings = (savings / income) * 100;
-float  percent_of_spending = (spending / income) * 100;
+float percent_of_groceries = display(groceries, income, "groceries");
+float percent_of_transportation = display(transportation, income, "transportation");
+float percent_of_savings = display(savings, income, "savings");
+float  percent_of_spending = display(spending, income, "spending");
  
 printf("Your rent is $%.2f which is %.2f%% of your income.\n", rent, percent_of_rent);  
 printf("Your utilities are $%.2f which is %.2f%% of your income.\n", utilities, percent_of_utilities);  
