@@ -1,51 +1,53 @@
 //Alan De Lara, Update Financial Calculator - C
 
-#include <stdio.h>
-
-float inputs(char* type, float* input){
-    printf("What is your monthly %s cost:\n", type);
-    scanf("%f", input);
-    return *input;
-}
-
-void display(float cost, float income, const char* type) {  
+#include <stdio.h>  
+  
+float inputs(char* type){   
+    printf("What is your monthly %s cost:\n", type); 
+  
+}  
+float display(float cost, float income, const char* type) {  
     float percent = (cost / income) * 100;  
     printf("Your %s is $%.2f, which is %.2f%% of your income.\n", type, cost, percent);  
 }
+  
+ 
+ 
 
-
-
-float spendings;
-float savings;
-float rent;
-float income;
-float utilities;
-float groceries;
-float transportation;
-
-
-int main(void){
+int main(void){  
+    printf("Welcome to the Financial Calculator! This program will help you analyze your income and expenses.\n");  
+  
+    float income = inputs("income"); // do this with the others
+    scanf("%f", &income); 
+    float rent = inputs("rent");  
+    scanf("%f", &rent);
+    float utilities = inputs("utilities");  
+    scanf("%f", &utilities);
+    float groceries = inputs("groceries");  
+    scanf("%f", &groceries);
+    float transportation = inputs("transportation");  
+    scanf("%f", &transportation);
+  
+    float savings = income * 0.1;  
+    float spending = income - (rent + utilities + groceries + transportation + savings);  
+  
     
-printf("Hello, this is my finantial calculator that calculates savings, spendins, and other finantial expenses.\n");
-printf("What is your monthly income:\n");
-scanf("%f", &income);
+     
+  
 
-rent = inputs("rent", &rent);
-utilities = inputs("utilities", &utilities);
-groceries = inputs("groceries", &groceries);
-transportation = inputs("transportation", &transportation);
+    
 
-savings = income*0.1;
-spendings = income-savings-rent-utilities-groceries-transportation;
+float percent_of_rent = display(rent, income, "rent");  
+float percent_of_utilities = display(utilities, income, "utilities");
+float percent_of_groceries = display(groceries, income, "groceries");
+float percent_of_transportation = display(transportation, income, "transportation");
+float percent_of_savings = display(savings, income, "savings");
+float percent_of_spending = display(spending, income, "spending");
+ 
 
+    
+    
+    
+    return 0;  
 
-display(rent, income, "rent");  
-display(utilities, income, "utilities");  
-display(groceries, income, "groceries");  
-display(transportation, income, "transportation");  
-display(savings, income, "savings");  
-display(spendings, income, "spendings");  
-
-
-    return 0;
-}
+}  
