@@ -3,6 +3,15 @@
         "Expressions_Practice.C": "cpp",
         "stdio.h": "c",
         "typeinfo": "c",
-        "update_your_financial_calculator.C": "cpp"
+        "update_your_financial_calculator.C": "cpp",
+        "optional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "system_error": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
     }
 }

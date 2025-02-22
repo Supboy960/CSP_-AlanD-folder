@@ -2,7 +2,7 @@
 
 #include <stdio.h>  
   
-float inputs(char type[20]){   
+float inputs(char* type){   
     printf("What is your monthly %s cost:\n", type);   
 }  
 float display(float cost, float income, const char* type) {  
