@@ -47,27 +47,29 @@ else: #,+ else always ends the onditional
 # ! Not 
 
 #7.What are the 3 logical operators?
- if num <10 and > 5: #And means both booleans must be true
+if num <10 and num >5: #And means both booleans must be true
     print("This is a big single digit number")
     
-elif num <10 or > 5: #or means one booleans must be true
+elif num <10 or num >5: #or means one booleans must be true
     print("This is a single digit number")
 
-elif  not num <10 or > 5: #Not chages to check if flase
+elif  not num <10 or num >5: #Not chages to check if flase
     print("This is a not single digit number")
-
 
 #8.What are logical operators for?
     #Allows the code to handle more difficlut qestions ... increase compleity
 
 #9.What does a nested conditional statement do?
- if num <10: 
+if num <10: 
     if num ==8:
         print("this prints at 8")
     else:
-        print("The number is less then 10")
- else:
-    print(The munber is bigger than 10)
+        if num ==4:
+            print("There are only engoh cookies left for me ... sorry")
+        else:
+            print("The number is less then 10")
+else:
+    print("The munber is bigger than 10") # You can east as meny contditionals you want but proble no more then 3
 #10.How do you write an if statement in C?
 #11.How do you write else statements in C?
 #12.How do you write elif/ else if statements in C?
