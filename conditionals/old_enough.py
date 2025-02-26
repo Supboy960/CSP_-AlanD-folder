@@ -1,18 +1,16 @@
 #Alan De Lara, Old Enough- Python
 
-# Douglas London, Old enough python
+print("Welcome to my old enough program that tells you whether you are old enough to vote, drive, get a learners permit, and go to school. (Don't take the advice given seriously from this program, this only for entertainment purposes only.)")
 
-print("Welcome to my old enough program that tells you whether you are old enough to vote, drive, get a learners permit, and go to school.")
+age = input("What is your age(in years!):\n")
 
-age = input("What is your age:\n")
-
-if age >= 18:
-    print("You can vote, drive, get a learners pemit, and go to school.\n")
+if age < 5:
+    print("You aren't old enough to go to school, 6you can't get your get your learner's permit, drive, or vote.\nHow are you running this program?\nHow can you even read this?!?\n")
+elif age >= 18:
+    print("You are old enough to vote, drive, get your learner's permit, and (should be) go to school.\n")
 elif age >= 16:
-        print("you can drive, get a learners permit, and go to school.\n")
+    print("You are old enough to drive. Hopefully you know what to do at a red light!...(SLAM THE GAS!!!!)\n")
 elif age >= 15:
-        print("You can get a learners permit and go to school.\n")
-elif age < 5 :
-        print("How are you on this program if you don't know numbers or how to read? You can't go to school, get your learner's permit, drive, or vote....(yet)\n")
+    print("You are old enough to get your learner's permit. Exciting, but be careful!\n")
 else:
-    print("You get to learn at school!...YAY!\n")
+    print("You are old enough and should be going to school.\n")
