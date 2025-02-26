@@ -39,7 +39,7 @@ else: #,+ else always ends the onditional
     print("There are many.")
 #6.What do each of the different symbols mean in conditionals? 
 # < lees than
-# > Creater than
+# > Greater than
 # <= Less than or equal to
 # >= Greather than or equal to
 # == Equal to 
