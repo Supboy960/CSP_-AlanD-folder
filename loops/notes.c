@@ -58,7 +58,7 @@ for(m=0;m<mlength;m++){
 //10.How do you make while loops in C?
     int w = 0;
 
-    while(w<100){
+    while(w<=100){
         printf("%d\n", w);
         w += 10;
     }
