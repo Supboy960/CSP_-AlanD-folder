@@ -56,11 +56,11 @@ for(m=0;m<mlength;m++){
     printf("%s\n", movies[m]);
 }
 //10.How do you make while loops in C?
-    int w = 100;
+    int w = 100;//start point
 
-    while(w>=0){
+    while(w>=0){//sotp point
         printf("%d\n", w);
-        w -= 10;
+        w -= 10;//what we count by
     }
     return 0;
 }
