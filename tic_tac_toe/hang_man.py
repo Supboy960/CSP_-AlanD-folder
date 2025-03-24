@@ -1,19 +1,81 @@
+#Alan De Lara
 import random  
   
 # Your original word list  
-words = ["pattern", "hay", "overview", "anniversary", "flourish", "remember", "experiment"]  
+words = ["pattern", "hay", "overview", "anniversary", "flourish", "remember", "experiment","arrange", "stadium", "domestic", "demonstration", "conversation", ]  
   
 def display_hangman(wrong_attempts):  
-    # Hangman stages as defined earlier  
-    stages = [  
-        "\n   O  \n",   
-        "\n   O  \n   |  \n",   
-        "\n   O  \n  /|  \n",   
-        "\n   O  \n  /|\\ \n",   
-        "\n   O  \n  /|\\ \n   |  \n",   
-        "\n   O  \n  /|\\ \n   |  \n  /   \n",   
-        "\n   O  \n  /|\\ \n   |  \n  / \\ \n"  
-    ]  
+    if wrong_attempts == 0:  
+        return """  
+          ------  
+          |      |  
+          |        
+          |        
+          |        
+          |        
+        __|_________  
+        """  
+    elif wrong_attempts == 1:  
+        return """  
+          ------  
+          |      |  
+          |      O  
+          |        
+          |        
+          |        
+        __|_________  
+        """  
+    elif wrong_attempts == 2:  
+        return """  
+          ------  
+          |      |  
+          |      O  
+          |      |  
+          |        
+          |        
+        __|_________  
+        """  
+    elif wrong_attempts == 3:  
+        return """  
+          ------  
+          |      |  
+          |      O  
+          |     /|  
+          |        
+          |        
+        __|_________
+        """  
+    elif wrong_attempts == 4:  
+        return """  
+          ------  
+          |      |  
+          |      O  
+          |     /|  
+          |      |  
+          |        
+       ___|_________ 
+        """  
+    elif wrong_attempts == 5:  
+        return """  
+          ------  
+          |      |  
+          |      O  
+          |     /|  
+          |      |  
+          |     /  
+        __|_________ 
+        """  
+    elif wrong_attempts == 6:  
+        return """  
+          ------  
+          |      |  
+          |      O  
+          |     /|\\  
+          |      |  
+          |     / \\  
+        __|_________  
+        """  
+
     return stages[wrong_attempts]  
   
 def check_guess(letter, chosen_word, guessed_letters):  
@@ -58,3 +120,6 @@ while True:
     play_again = input("Do you want to play again? (yes/no) ")  
     if play_again.lower() != "yes":  
         break  
+
+
+   
