@@ -40,7 +40,7 @@ def display_hangman(wrong_attempts):
           ------  
           |      |  
           |      O  
-          |     /|  
+          |     /|
           |        
           |        
         __|_________
@@ -50,7 +50,7 @@ def display_hangman(wrong_attempts):
           ------  
           |      |  
           |      O  
-          |     /|  
+          |     /|\\
           |      |  
           |        
        ___|_________ 
@@ -60,7 +60,7 @@ def display_hangman(wrong_attempts):
           ------  
           |      |  
           |      O  
-          |     /|  
+          |     /|\\
           |      |  
           |     /  
         __|_________ 
@@ -120,6 +120,3 @@ while True:
     play_again = input("Do you want to play again? (yes/no) ")  
     if play_again.lower() != "yes":  
         break  
-
-
-   
