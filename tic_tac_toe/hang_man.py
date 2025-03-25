@@ -1,6 +1,6 @@
 #Alan De Lara
 import random  
-
+import time  
 # word list  
 words = ["pattern", "hay", "overview", "anniversary", "flourish", "remember", "experiment","arrange", "stadium", "domestic", "demonstration", "conversation", ]  
   
@@ -95,19 +95,18 @@ while True:
                 print("You've already guessed that letter.")  
             else:  
                 if check_guess(letter, chosen_word, guessed_letters):  
-                    print("Good guess!")  
-                else:  
-                    wrong_attempts += 1  
-                    print("Wrong guess!")  
+    delayed_print("Good guess!", 0.45)  
+else:  
+    wrong_attempts += 1    
+    delayed_print("Wrong guess!", 0.45)  
   
-        if set(chosen_word).issubset(set(guessed_letters)):  # Win condition  
-            print("Congratulations! You've guessed the word:", chosen_word)  
-            break  
+if wrong_attempts == max_attempts:  
+    delayed_print("Game over! The word was: " + chosen_word, 0.45)  
   
-    if wrong_attempts == max_attempts:  # Loss condition  
-        print("Game over! The word was:", chosen_word)  
+if set(chosen_word).issubset(set(guessed_letters)):  
+    delayed_print("Congratulations! You've guessed the word: " + chosen_word, 0.45)  
   
-    # ask if they want to play again  
-    play_again = input("Do you want to play again? (yes/no) ")  
+play_again = input("Do you want to play again? (yes/no) ")  
+  
     if play_again.lower() != "yes":  
         break  
