@@ -114,6 +114,3 @@ while True:
     play_again = input("Do you want to play again? (yes/no) ")    
     if play_again.lower() != "yes":    
         break    
-
-    (if wrong_attempts == 5:  
-    print("You have one more guess!")  )
