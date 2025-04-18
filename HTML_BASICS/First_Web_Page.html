@@ -4,69 +4,115 @@
         <meta charset="UTF-8"> <!--Type of alphabet used-->
         <title>The Legendary Mk4 Supra vs Dodge Charger SRT Hellcat Redeye Jailbreak</title><!--What shows in the tab at the top of the page-->
         <style>
-            *{
-                background-color: #c90000;
-                color: #000000;
+            /* Universal reset for consistent layout */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-            p{
-                font-family: Georgia, 'Times New Roman', Times, serif;
-                font-size: medium;
+
+            /* Page background and text */
+            body {
+                background-color: #c90000; /* Dark red background */
+                color: #ffffff; /* White text */
+                font-family: Arial, sans-serif; /* Simple, clean font */
+                line-height: 1.6; /* Better spacing for readability */
+                padding: 20px; /* Adds padding around the content */
             }
-            #title{
+
+            /* Centering and styling the title */
+            #title {
                 text-align: center;
-                font-size: xx-large;
-            }
-            #headerTwo{
-                font-size: x-large;
-            }
-            #headerThree{
-                font-size: larger;
-            }
-            #italic{
-                font-style: italic;
-            }
-            #bold{
+                font-size: 2.5em;
                 font-weight: bold;
+                color: #ffcc00; /* Gold color to make it stand out */
+                margin-bottom: 20px;
             }
-            #link{
-                color: #165BFB;
+
+            /* Headings styling (h1 to h6) */
+            h1, h2, h3 {
+                color: #ffcc00; /* Gold color */
+                text-align: center;
+                margin-top: 20px;
             }
-            img{
-                width: 20%;
+
+            /* Paragraph styling */
+            p {
+                font-size: 1em;
+                margin: 20px;
+                text-align: justify;
             }
-            #img-src{
+
+            /* Links styling */
+            a {
+                color: #165BFB; /* Blue links */
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline; /* Underline on hover */
+            }
+
+            /* Image styling */
+            img {
+                width: 300px; /* Resizing all images */
+                height: auto; /* Maintain aspect ratio */
+                display: block;
+                margin: 20px auto;
+                border: 2px solid #ffffff; /* Adds a white border */
+                border-radius: 10px; /* Rounded edges */
+            }
+
+            /* Image captions */
+            #img-src {
                 font-size: small;
                 font-weight: bold;
-                color: #5A2A9B;
+                color: #5A2A9B; /* Purple for captions */
+                text-align: center;
+                display: block;
+            }
+
+            /* Styling for unordered lists */
+            ul {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            li {
+                margin: 5px 0; /* Adds space between list items */
+            }
+
+            /* Section styling for padding and spacing */
+            section {
+                margin-bottom: 30px;
             }
         </style>
     </head>
-    <style>
-        #img-src{ 
-            width: 200px;
-            height: 200px;
-        
-        }
-        
-    </style>
     <body><!--This is shown on the webpage-->
-        <h1>The Legendary Mk4 Supra vs Dodge Charger SRT Hellcat Redeye Jailbreak</h1>
-        <p> Douglas and I have been talking about our dream cars recently, which made me think: Whose car is really better? In this website, I will be comparing the two cars to explain why the Mk4 Toyota Supra is better than the 2023 Dodge Charger SRT Hellcat Redeye Jailbreak. Not only does the Supra deliver unmatched tuning potential, but heads turn and jaws drop at its sleek, timeless design—a symbol of automotive history and pure performance. Meanwhile, the Hellcat, with all its flashy horsepower, is just another gas-guzzler that screams “try-hard” as it guzzles fuel and struggles to fit in parking spaces. People see a Hellcat and think, “That guy wants attention,” but when they see a Supra, they nod with respect—it’s a car that commands admiration, not noise. The Mk4 Supra’s legendary status is unshakeable, proving itself as a car worthy of the dream garage. (This is for fun)</p>
-       
-        <h1>Mk4 Supra: A True Automotive Icon</h1><!--Largest Header tag-->
-        <dt>Supra MK4</dt>
-        <div id="images">
-            <img src="https://shop.hoonigan.com/cdn/shop/articles/S1_EP4_FRONT34_2.jpg?v=1532035834&width=1500" alt="Supra mk 4">
-            <small><small> <dt> Image from: [HOONIGAN] </dt></small>
-            <dd>This was the Supra that worud carry the lecacy of it's ancestors!</dd>
 
-        <h2>Engineering Marvel</h2>
-       
-        <p>Mk4 Supra (2JZ-GTE): Without the limiter, the Mk4 Supra can achieve a top speed of approximately 180–190 mph, depending on factors like aerodynamics and gearing. The 2JZ-GTE engine is robust and capable of handling high speeds, but stability modifications (like better tires and suspension) are recommended for safety at such speeds.</p>
+        <!-- Title -->
+        <h1 id="title">The Legendary Mk4 Supra vs Dodge Charger SRT Hellcat Redeye Jailbreak</h1>
 
+        <!-- Introduction Paragraph -->
+        <p>Douglas and I have been talking about our dream cars recently, which made me think: Whose car is really better? In this website, I will be comparing the two cars to explain why the Mk4 Toyota Supra is better than the 2023 Dodge Charger SRT Hellcat Redeye Jailbreak. Not only does the Supra deliver unmatched tuning potential, but heads turn and jaws drop at its sleek, timeless design—a symbol of automotive history and pure performance. Meanwhile, the Hellcat, with all its flashy horsepower, is just another gas-guzzler that screams “try-hard” as it guzzles fuel and struggles to fit in parking spaces. People see a Hellcat and think, “That guy wants attention,” but when they see a Supra, they nod with respect—it’s a car that commands admiration, not noise. The Mk4 Supra’s legendary status is unshakeable, proving itself as a car worthy of the dream garage.</p>
 
+        <!-- Mk4 Supra Section -->
+        <h1>Mk4 Supra: A True Automotive Icon</h1>
+        <section>
+            <img src="https://shop.hoonigan.com/cdn/shop/articles/S1_EP4_FRONT34_2.jpg?v=1532035834&width=1500" alt="Supra Mk4">
+            <span id="img-src">Image from: [HOONIGAN]</span>
+            <p>This was the Supra that carried the legacy of its ancestors!</p>
+        </section>
+
+        <!-- Dodge Charger Section -->
+        <h1>The 2023 Dodge Charger SRT Hellcat Redeye Jailbreak</h1>
+        <section>
+            <img src="https://hips.hearstapps.com/hmg-prod/images/2021-dodge-charger-srt-hellcat-redeye-103-1593634315.jpg?crop=0.811xw:0.685xh;0.103xw,0.147xh&resize=2048:*" alt="Dodge Charger SRT Hellcat">
+            <span id="img-src">Image from: Car and Driver</span>
+        </section>
+
+        <!-- Comparison Section -->
         <h2>Chargers VS Supras</h2>
-
         <h3>The 2023 Dodge Charger SRT Hellcat Redeye Jailbreak</h3>
         <ul>
             <li>807 HP, 6.2L Supercharged V8</li>
@@ -82,76 +128,24 @@
             <li>Top speed ~155 mph (limited)</li>
             <li>Top speed 175–185 mph (without limiter)</li>
             <li>~324 lb-ft torque</li>
-        </ul> 
-        <br>
-        <h3>The Dodge Charger SRT Hellcat Redeye Jailbreak</h3>
-        <p>Dodge Charger SRT Hellcat Redeye Jailbreak: This beast, without its limiter, can reach a top speed of around 210–215 mph. Its supercharged V8 engine and aerodynamic design allow it to excel in straight-line speed, but its weight and size might make it less agile compared to the Supra.
-        </p>
-       
-        <h3>A Brief History of the Supra:</h3>
-        <p>The Toyota Supra has a rich legacy:</p>
-          <li> Mk1 (1978–1981): The Supra began as a high-performance version of the Toyota Celica, featuring inline-6 engines.</li>
-           <li> Mk2 (1981–1986): It gained a more distinct identity with improved performance and styling.</li>
-           <li>Mk3 (1986–1993): Introduced turbocharging and advanced tech like ABS, solidifying its reputation as a sports car.</il>
-           <li>Mk4 (1993–2002): The iconic 2JZ-GTE engine made this generation legendary, with its tuning potential and cultural impact.</li>
-           <li> Mk5 (2019–present): The latest Supra, developed in collaboration with BMW, shares its platform and engine with the BMW Z44. While some enthusiasts criticize this partnership, Toyota emphasizes that it was necessary to retain the inline-6 engine and keep the Supra alive.Let be honset this is not a real Supra but it is almost better than the Dodge Charger SRT Hellcat Redeye Jailbreak</li>
-           <dd> Mini history on the <a href="https://www.youtube.com/watch?v=EkI2Pw6nrXw&ab_channel=Donut" target="_blank">Mk1-Mk5 Supra</a>."Flop to a legandry BOP"</dd>
+        </ul>
 
-            <h1>Flaws with the Dodge Charger SRT Hellcat Redeye Jailbreak</h1>
-            <dt>The 2023 Dodge Charger SRT Hellcat Redeye Jailbreak</dt>
-        <div id="images">
-            <img src="https://hips.hearstapps.com/hmg-prod/images/2021-dodge-charger-srt-hellcat-redeye-103-1593634315.jpg?crop=0.811xw:0.685xh;0.103xw,0.147xh&resize=2048:*" alt="Dodge Charger" >
-            <small><small> <dt> Image from: Car and Driver </dt></small>
-            
-        <p>THese are alll the things worng with the Dodge Charger</p>
-
-
-        <h2>Big on Power, but Bigger on Bulk.</h2>
-
-
-        <p>The Dodge Charger Hellcat Redeye is like the heavyweight boxer who skipped leg day—a beast on the straights but hopelessly clumsy in the corners. Sure, it boasts 797–807 HP, but when that power is hauling around nearly 4,600 pounds of car, it’s like dragging a boulder uphill. Good luck feeling agile in a car that’s as wide as a cruise ship and handles more like one.
-        </p>
-
+        <!-- Roast Section -->
+        <h1>Flaws with the Dodge Charger SRT Hellcat Redeye Jailbreak</h1>
+        <h2>Big on Power, but Bigger on Bulk</h2>
+        <p>The Dodge Charger Hellcat Redeye is like the heavyweight boxer who skipped leg day—a beast on the straights but hopelessly clumsy in the corners. Sure, it boasts 797–807 HP, but when that power is hauling around nearly 4,600 pounds of car, it’s like dragging a boulder uphill. Good luck feeling agile in a car that’s as wide as a cruise ship and handles more like one.</p>
 
         <h2>Supercar Speeds, Sedan Looks</h2>
+        <p>The Hellcat might be fast, but underneath all that speed is a basic four-door sedan trying to masquerade as something more remarkable. Let’s face it, it’s hard to take it seriously when it still looks like the car you’d borrow from your dad for prom night. The Supra? It’s sleek, stylish, and unmistakably built for enthusiasts—not soccer runs or carpooling.</p>
 
-
-        <p>The Hellcat might be fast, but underneath all that speed is a basic four-door sedan trying to masquerade as something more remarkable. Let’s face it, it’s hard to take it seriously when it still looks like the car you’d borrow from your dad for prom night. The Supra? It’s sleek, stylish, and unmistakably built for enthusiasts—not soccer runs or carpooling. </p>
-
-
-        <h2>Straight Roads Only, Please.</h2>
-
-
-        <p>While the Hellcat thrives on a drag strip, throw a couple of curves its way and you’ll find yourself gripping the wheel for dear life. Its size and weight make it a nightmare to maneuver compared to the Supra, which dances through turns like a ballerina. The Hellcat might win the stoplight showdown, but the Supra will leave it gasping in a real driving scenario.  </p>
-
+        <h2>Straight Roads Only, Please</h2>
+        <p>While the Hellcat thrives on a drag strip, throw a couple of curves its way and you’ll find yourself gripping the wheel for dear life. Its size and weight make it a nightmare to maneuver compared to the Supra, which dances through turns like a ballerina. The Hellcat might win the stoplight showdown, but the Supra will leave it gasping in a real driving scenario.</p>
 
         <h2>Legacy? What Legacy?</h2>
-
-
         <p>The Mk4 Supra is the stuff of legend, cemented by its robust 2JZ-GTE engine, pop culture stardom, and cult following worldwide. The Hellcat? It’s got raw power, but let’s not pretend anyone’s putting its V8 up on a pedestal for groundbreaking innovation. Once the Charger is gone, it’ll fade into the background like just another muscle car—while the Supra remains an everlasting icon.</p>
 
-
         <h2>Fuel Guzzler Extraordinaire</h2>
+        <p>At least you can save some cash modding a Supra instead of constantly fueling the Charger Hellcat. The Hellcat drinks gasoline like an all-you-can-eat buffet, while the Supra’s tuned setup can balance performance without needing to stop at every gas station along the highway.</p>
 
-
-        <p>At least you can save some cash modding a Supra instead of constantly fueling the Charger Hellcat. The Hellcat drinks gasoline like an all-you-can-eat buffet, while the Supra’s tuned setup can balance performance without needing to stop at every gas station along the highway.
-        </p>
-
-
-        
-        <h2>The Legendary MK 4</h2>
-
-
-        <p>The Mk4 Toyota Supra is a timeless legend — a true JDM masterpiece that earned its crown on the streets, tracks, and screens of pop culture. Its 2JZ-GTE inline-6 twin-turbo engine is nothing short of iconic, capable of handling over 1,000 horsepower with the right mods — without breaking a sweat. It’s a driver’s car: lightweight, nimble, manual transmission, and built with pure performance in mind. It doesn’t need touchscreens or fake exhaust notes to feel exciting — the experience is raw, mechanical, and real. Its design is sleek and timeless, and its reputation? Untouchable. The Supra isn’t just a car — it’s a culture, a community, and a symbol of tuning potential that continues to dominate the scene decades later.
-        </p>
-
-
-        <h2>The other car</h2>
-
-
-        <p>Now the Charger Hellcat Redeye... sure, it has a big engine and flashy numbers, but let’s be real: it’s a muscle minivan trying to flex. It’s massive, heavy, and handles like a cruise ship on corners. All that horsepower? Good luck putting it to the ground without turning your tires into expensive smoke. It needs launch control just to stop embarrassing itself at red lights. It drinks gas like it's going out of style and offers more screen time than actual driver engagement. Yeah, it’s fast—in a straight line—but it’s not a car you bond with. It’s the automotive equivalent of yelling “look how loud I am” and hoping someone’s impressed. Meanwhile, the Supra just smiles… and wins respect without even trying. </p>
-
-
-       
-    </body>
-</html>
+        <h2>The Legendary MK4 Supra vs The "Other Car"</h2>
+        <p>The Mk4 Toyota Supra is a timeless legend—a true JDM masterpiece that earned its crown on the streets, tracks, and screens of pop culture. Its 2JZ-GTE inline-6 twin-turbo engine is nothing short of iconic, capable of handling over 1,000 horsepower with the right mods—without breaking a sweat. It’s a driver’s car: lightweight, nimble, manual transmission, and built with pure performance in mind. It doesn’t need touchscreens or fake exhaust notes to feel exciting—the experience is raw, mechanical, and real. Its design is sleek and timeless, and its reputation? Untouchable.</
