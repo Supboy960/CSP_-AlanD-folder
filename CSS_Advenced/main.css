@@ -1,7 +1,40 @@
 *{
-    background-color: rgb(255, 249, 240);
-    color: rgb(203, 77, 19);
-    font-family: "Lavishly Yours", cursive;
+    background-color: blanchedalmond;
+    font-family: "Meow Script", cursive;
     font-weight: 400;
-    font-style: normal;
+    font-style: none;
+}
+p{
+    background-color: rgba(245, 138, 220, 0.799);
+    border-radius: 5px;
+    padding:3px;
+    margin: 2px;
+}
+#content{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+#one{
+    display:flex;
+    flex-direction: row-reverse;
+}
+img{
+    height: 150px;
+}
+#img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+/*Generic Font Families
+1. Serif
+2. Sans-serif
+3. Monosapce
+4. Cursive
+5. Fantasy */
+#no{
+    display: block;
+    margin: auto;
+    width: 50%;
 }
