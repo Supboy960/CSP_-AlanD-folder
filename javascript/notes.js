@@ -4,7 +4,7 @@ let images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhcUZpl8OWq
 ]
 function hello(){
     let name = window.prompt("What is your name?", "Koro Sensei")
-    document.getElementById("title").innerHTML = "Hello " + name + "!"
+    document.getElementById("title").innerHTML = "Hello " + name + "! You know that Supra is the best car since you are here."
 }
 count = 0
 function change(){
