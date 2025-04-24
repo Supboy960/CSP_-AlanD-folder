@@ -1,9 +1,6 @@
-let images = [
+let images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhcUZpl8OWqEIF8Ovv2ehl6d3IdaVWrKOm4w_VeeOK-4JN7RpHyQ&s=10&ec=72940545","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmI64E8Soa1kYDYzCrsOeQnoW2-w3MoHOT7g7otm9UqJAXKsFIbA&s=10&ec=72940545" , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsisMjDMgcDz1sH_fQYqH6tq-7cT5vjgwtqjJUMSzC3kGBbPSTOg&s=10&ec=72940545" 
 ]
-function hello(){
-    let name = window.prompt("What is your name?", "Koro Sensei")
-    document.getElementById("title").innerHTML = "Hello " + name + "!"
-}
+
 count = 0
 function change(){
     document.getElementById("img").src = images[count]
