@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Java Script Notes</title>
+        <script src="notes.js"></script>
+        <style>
+            img{
+                height: 100px;
+                width: auto;
+            }
+            #hidden{
+                display:none;
+            }
+            #extra{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="title" onclick="show()">Title of page</h1>
+        <p id="dont" onclick="pop()">Don't click me!</p>
+        <button id="btn" onmouseover="highlight()" onmouseout="normal()" onmousedown="push()" onmouseup="highlight()"onclick="hello()">Click Me!</button>
+        <br>
+        <img id="img" onmouseover="change()" src="https://images.squarespace-cdn.com/content/v1/63c60d44c98af85334537583/644359f9-c213-4d77-bdb0-b78b7f8424f3/Mount_Timpanogos_at_sunset.jpg" alt="timp">
+        <br>
+        <img id="hidden" src="https://i.imgflip.com/5sptxz.jpg">
+        <button id="shw" onclick="more()">Show More</button>
+        <div id="extra">
+            <p>lkafd;ndsgoahgfd;oangdouhads;ofandsaoungd;oausngfdaunfdsgo</p>
+            <ul>
+                <li>alkgdoa</li>
+                <li>alkgdoa</li>
+                <li>alkgdoa</li>
+                <li>alkgdoa</li>
+            </ul>
+        </div>
+    </body>
+</html>
