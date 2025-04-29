@@ -26,7 +26,13 @@ function push(){
 function show(){
     document.getElementById("hidden").style.display = "block"
 }
+function hoverChange() {
+    document.getElementById("hover-img").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYqbnR38aj7B1bya3peQ_0xfkGi7ZdoNpnb8WrgxhmYxwDAeAlag&s=10&ec=72940545"; // New image
+}
 
+function hoverReset() {
+    document.getElementById("hover-img").src = "https://bearlake.org/wp-content/uploads/94385980_3269045716463689_7742076750342914048_o.jpg"; // Original image
+}
 
 function more(){
     if(document.getElementById("extra").style.display != "flex"){
