@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-gap: 20px; /* Space between grid items */
+    padding: 20px;
+}
+
+section {
+    background-color: #d38c30; /* Section background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
