@@ -11,3 +11,32 @@ section {
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
+
+#content{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+#one{
+    display:flex;
+    flex-direction: row-reverse;
+}
+img {
+    width: 550px; /* Larger image size for better visibility */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #413535; /* Adds a  border */
+    border-radius: 15px; /* Rounded edges */
+}
+#img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#no{
+    display: block;
+    margin: auto;
+    width: 50%;
+}

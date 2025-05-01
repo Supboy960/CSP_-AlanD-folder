@@ -19,7 +19,8 @@ p{
     flex-direction: row-reverse;
 }
 img{
-    height: 150px;
+    height: 500px;
+    
 }
 #img{
     display: flex;
