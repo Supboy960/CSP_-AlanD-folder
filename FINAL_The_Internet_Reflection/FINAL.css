@@ -10,6 +10,7 @@ header {
 }
 
 header p {
+    text-align: center;  
     font-size: 1.2em;
     line-height: 1.6;
     margin: 10px auto; /* Add spacing above and below the paragraph */
