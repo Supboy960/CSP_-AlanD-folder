@@ -1,22 +1,5 @@
 
-header {
-    margin: 20px auto;          /* Center the header with margin */
-    text-align: center;         /* Center the text */
-    padding: 20px;              /* Add padding for spacing */
-    background-color: var(--section-bg); /* Match the section background */
-    border-radius: 10px;        /* Add rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a shadow for consistency */
-    max-width: 800px;           /* Limit the width of the header */
-}
 
-header p {
-    text-align: center;  
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin: 10px auto; /* Add spacing above and below the paragraph */
-    max-width: 700px;  /* Limit the width for better alignment */
-    text-align: justify; /* Optional: Justify the text for a cleaner look */
-}
 /* Variables for consistency */
 :root {
     --background-color: #ce9766;
@@ -30,7 +13,7 @@ header p {
 /* General Styles */
 body {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     font-family: 'Roboto', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -50,6 +33,7 @@ h1, h2, h3 {
 }
 
 section {
+    text-align: center;  
     background-color: var(--section-bg);
     border-radius: 10px;
     padding: 15px;
