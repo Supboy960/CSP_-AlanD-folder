@@ -63,11 +63,13 @@ img {
     margin-bottom: 15px;
     transition: transform 0.3s ease; /* Smooth transition for hover effects */
 }
-#img {
-    width: 500px;        /* Make it take the full width of its container */
-    height: 300px;       /* Set a fixed height */
-    object-fit: cover;  /* Ensure the image covers the area without stretching */
-    border-radius: 10px; /* Optional: round the corners */
+img {
+    width: 100%; /* Ensure images take up the full width of their container */
+    height: 300px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure the image scales without distortion */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
 }
 
 img:hover {
