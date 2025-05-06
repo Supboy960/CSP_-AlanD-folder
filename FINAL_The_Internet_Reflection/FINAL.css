@@ -1,3 +1,19 @@
+header {
+    margin: 20px auto;          /* Add margin to center the header */
+    text-align: center;         /* Center the text */
+    padding: 15px;              /* Add padding for spacing */
+    background-color: var(--section-bg); /* Match the section background */
+    border-radius: 10px;        /* Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a shadow for consistency */
+    max-width: 800px;           /* Limit the width of the header */
+}
+
+header p {
+    font-size: 1.2em; /* Increase font size for readability */
+    line-height: 1.6; /* Improve line spacing */
+    margin: auto; /* Center the paragraph */
+    max-width: 800px; /* Limit the width for better readability */
+}
 /* Variables for consistency */
 :root {
     --background-color: #ce9766;
@@ -38,10 +54,22 @@ section {
 }
 
 img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ensure images take up the full width of their container */
+    height: auto; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure the image scales without distortion */
     border-radius: 10px;
     margin-bottom: 15px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+}
+#img {
+    width: 500px;        /* Make it take the full width of its container */
+    height: 300px;       /* Set a fixed height */
+    object-fit: cover;  /* Ensure the image covers the area without stretching */
+    border-radius: 10px; /* Optional: round the corners */
+}
+
+img:hover {
+    transform: scale(0.95); /* Slightly shrink the image on hover */
 }
 
 button {
