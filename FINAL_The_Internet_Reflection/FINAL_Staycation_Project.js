@@ -11,7 +11,7 @@ function change() {
     imgElement.src = images[count];
     count = (count + 1) % images.length; // Loop back to the first image
 }
-
+// Hover Image Change
 function highlight(){
     document.getElementById("btn").style.backgroundColor = "orange"
     document.getElementById("btn").style.color = "white"

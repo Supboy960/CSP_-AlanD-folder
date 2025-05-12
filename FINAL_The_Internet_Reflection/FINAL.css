@@ -25,6 +25,7 @@ h1, h2, h3 {
     color: var(--highlight-color);
 }
 
+
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -72,4 +73,8 @@ button {
 button:hover {
     background-color: var(--button-hover);
     color: white;
+}
+/* Hidden Section */
+#extra {
+    display: none;
 }
