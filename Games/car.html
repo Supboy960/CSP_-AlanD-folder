@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Street Racer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            color: #fff;
+            overflow: hidden;
+            image-rendering: pixelated;
+        }
+        
+        .game-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .stats {
+            background: rgba(0,0,0,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #00ff41;
+            font-size: 14px;
+            box-shadow: 0 0 20px rgba(0,255,65,0.3);
+        }
+        
+        .money {
+            color: #00ff41;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff41;
+        }
+        
+        .speed-gauge {
+            color: #ff3366;
+            font-weight: bold;
+        }
+        
+        .rpm-gauge {
+            color: #ffaa00;
+            font-weight: bold;
+        }
+        
+        .race-info {
+            background: rgba(0,0,0,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #ff3366;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255,51,102,0.3);
+        }
+        
+        .game-canvas {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            image-rendering: pixelated;
+        }
+        
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.95);
+            padding: 25px;
+            border-radius: 12px;
+            border: 3px solid #00ff41;
+            text-align: center;
+            z-index: 200;
+            box-shadow: 0 0 30px rgba(0,255,65,0.5);
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+        }
+        
+        .menu h2 {
+            color: #00ff41;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: 0 0 15px #00ff41;
+        }
+        
+        .menu button {
+            background: linear-gradient(45deg, #ff3366, #ff6b35);
+            border: 2px solid #fff;
+            color: white;
+            padding: 10px 20px;
+            margin: 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            transition: all 0.2s ease;
+            text-shadow: 0 0 5px rgba(0,0,0,0.8);
+        }
+        
+        .menu button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+            border-color: #00ff41;
+        }
+        
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .car-card {
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .car-card:hover::before {
+            left: 100%;
+        }
+        
+        .car-card:hover {
+            border-color: #00ff41;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,255,65,0.3);
+        }
+        
+        .car-card.selected {
+            border-color: #ff3366;
+            background: rgba(255,51,102,0.1);
+            box-shadow: 0 0 20px rgba(255,51,102,0.4);
+        }
+        
+        .car-card.owned {
+            border-color: #00ff41;
+        }
+        
+        .car-name {
+            font-weight: bold;
+            color: #00ff41;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .car-type {
+            color: #ffaa00;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .car-stats {
+            font-size: 11px;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+        
+        .stat-bar {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            margin: 2px 0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .stat-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        
+        .speed-bar { background: #ff3366; }
+        .accel-bar { background: #00ff41; }
+        .handle-bar { background: #00aaff; }
+        
+        .car-price {
+            color: #00ff41;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        .controls-info {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #666;
+            font-size: 12px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .upgrade-menu {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .upgrade-category {
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .upgrade-category h3 {
+            color: #00ff41;
+            margin-bottom: 10px;
+        }
+        
+        .upgrade-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.02);
+            border-radius: 4px;
+            border: 1px solid #444;
+        }
+        
+        .upgrade-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: #00ff41;
+        }
+        
+        .notification {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(45deg, #00ff41, #00aa33);
+            color: black;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            z-index: 150;
+            animation: slideIn 0.5s ease;
+            border: 2px solid #fff;
+            font-family: 'Courier New', monospace;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff3366, #ff6b35);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .minimap {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 150px;
+            height: 100px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #00ff41;
+            border-radius: 8px;
+            z-index: 90;
+        }
+        
+        .gear-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ffaa00;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffaa00;
+            min-width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="ui-overlay">
+            <div class="stats">
+                <div class="money">💰 $<span id="money">15000</span></div>
+                <div class="speed-gauge">🏎️ <span id="speed">0</span> MPH</div>
+                <div class="rpm-gauge">⚡ <span id="rpm">0</span> RPM</div>
+                <div>🏆 Wins: <span id="wins">0</span></div>
+                <div>🔧 Level: <span id="level">1</span></div>
+            </div>
+            <div class="race-info">
+                <div>Position: <span id="position">1st</span></div>
+                <div>Lap: <span id="lap">1/3</span></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="raceProgress" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="minimap hidden" id="minimap">
+            <canvas id="minimapCanvas" width="146" height="96"></canvas>
+        </div>
+        
+        <div class="gear-indicator hidden" id="gearIndicator">
+            <div>GEAR</div>
+            <div id="currentGear">1</div>
+        </div>
+        
+        <canvas id="gameCanvas" class="game-canvas"></canvas>
+        
+        <div class="controls-info">
+            <strong>🎮 CONTROLS:</strong><br>
+            ↑ Gas | ↓ Brake/Reverse<br>
+            ← → Steer | SPACE Handbrake<br>
+            ESC Menu | SHIFT Nitrous
+        </div>
+        
+        <!-- Main Menu -->
+        <div id="mainMenu" class="menu">
+            <h2>🏁 PIXEL STREET RACER</h2>
+            <div style="margin: 15px 0; color: #ffaa00;">
+                "Rule the Streets in 16-bit Style"
+            </div>
+            <button onclick="showGarage()">🚗 GARAGE</button>
+            <button onclick="startRace('street')">🌃 STREET RACE</button>
+            <button onclick="startRace('circuit')">🏁 CIRCUIT RACE</button>
+            <button onclick="startRace('drag')">⚡ DRAG RACE</button>
+            <button onclick="showUpgrades()">⚙️ TUNING SHOP</button>
+            <button onclick="showDealership()">🏪 DEALERSHIP</button>
+        </div>
+        
+        <!-- Garage Menu -->
+        <div id="garageMenu" class="menu hidden">
+            <h2>🚗 YOUR GARAGE</h2>
+            <div class="car-grid" id="carGrid"></div>
+            <button onclick="showMainMenu()">← BACK TO MENU</button>
+        </div>
+        
+        <!-- Dealership Menu -->
+        <div id="dealershipMenu" class="menu hidden">
+            <h2>🏪 CAR DEALERSHIP</h2>
+            <div class="car-grid" id="dealershipGrid"></div>
+            <button onclick="buySelectedCar()">💰 BUY SELECTED CAR</button>
+            <button onclick="showMainMenu()">← BACK TO MENU</button>
+        </div>
+        
+        <!-- Upgrade Menu -->
+        <div id="upgradeMenu" class="menu hidden upgrade-menu">
+            <h2>⚙️ TUNING SHOP</h2>
+            <div id="upgradeList"></div>
+            <button onclick="showMainMenu()">← BACK TO MENU</button>
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        let gameState = {
+            money: 15000,
+            currentCar: 0,
+            wins: 0,
+            level: 1,
+            experience: 0,
+            inRace: false,
+            raceType: 'street',
+            racePosition: 1,
+            currentLap: 1,
+            totalLaps: 3,
+            raceProgress: 0,
+            nitrous: 100
+        };
+        
+        // Enhanced car database with pixel racer style
+        const cars = [
+            // Starter Cars
+            { name: "Civic Hatch", type: "JDM Starter", price: 0, owned: true, speed: 65, acceleration: 70, handling: 80, power: 120, weight: 1200, tier: 1, rarity: "Common" },
+            { name: "Corolla AE86", type: "JDM Classic", price: 8500, owned: false, speed: 72, acceleration: 75, handling: 90, power: 140, weight: 1100, tier: 1, rarity: "Common" },
+            
+            // JDM Legends
+            { name: "Skyline GT-R R34", type: "JDM Legend", price: 45000, owned: false, speed: 92, acceleration: 88, handling: 85, power: 400, weight: 1560, tier: 3, rarity: "Legendary" },
+            { name: "Supra Mk4", type: "JDM Icon", price: 55000, owned: false, speed: 95, acceleration: 90, handling: 82, power: 450, weight: 1570, tier: 3, rarity: "Legendary" },
+            { name: "NSX Type-R", type: "JDM Supercar", price: 65000, owned: false, speed: 90, acceleration: 92, handling: 98, power: 350, weight: 1270, tier: 3, rarity: "Epic" },
+            { name: "RX-7 FD", type: "JDM Rotary", price: 35000, owned: false, speed: 85, acceleration: 90, handling: 95, power: 300, weight: 1250, tier: 2, rarity: "Rare" },
+            { name: "Lancer Evo IX", type: "JDM Rally", price: 32000, owned: false, speed: 88, acceleration: 92, handling: 95, power: 320, weight: 1400, tier: 2, rarity: "Rare" },
+            { name: "Impreza STI", type: "JDM AWD", price: 30000, owned: false, speed: 86, acceleration: 90, handling: 92, power: 310, weight: 1450, tier: 2, rarity: "Rare" },
+            
+            // European Exotics
+            { name: "M3 E46", type: "European Sport", price: 25000, owned: false, speed: 82, acceleration: 80, handling: 88, power: 250, weight: 1500, tier: 2, rarity: "Uncommon" },
+            { name: "911 Turbo", type: "German Engineering", price: 75000, owned: false, speed: 98, acceleration: 95, handling: 90, power: 500, weight: 1400, tier: 4, rarity: "Legendary" },
+            { name: "Ferrari F40", type: "Italian Exotic", price: 120000, owned: false, speed: 100, acceleration: 88, handling: 85, power: 480, weight: 1250, tier: 4, rarity: "Mythic" },
+            { name: "Lamborghini Diablo", type: "Italian Bull", price: 95000, owned: false, speed: 99, acceleration: 90, handling: 82, power: 520, weight: 1580, tier: 4, rarity: "Legendary" },
+            
+            // American Muscle
+            { name: "Mustang GT", type: "American Muscle", price: 18000, owned: false, speed: 78, acceleration: 85, handling: 70, power: 280, weight: 1650, tier: 1, rarity: "Common" },
+            { name: "Camaro Z28", type: "American Power", price: 22000, owned: false, speed: 82, acceleration: 88, handling: 72, power: 320, weight: 1700, tier: 2, rarity: "Uncommon" },
+            { name: "Challenger Hellcat", type: "Modern Muscle", price: 68000, owned: false, speed: 96, acceleration: 95, handling: 68, power: 707, weight: 2000, tier: 3, rarity: "Epic" },
+            { name: "Viper GTS", type: "American Supercar", price: 85000, owned: false, speed: 100, acceleration: 92, handling: 75, power: 600, weight: 1500, tier: 4, rarity: "Legendary" },
+            
+            // Hypercars
+            { name: "McLaren F1", type: "British Hypercar", price: 250000, owned: false, speed: 105, acceleration: 95, handling: 90, power: 650, weight: 1140, tier: 5, rarity: "Mythic" },
+            { name: "Koenigsegg CCX", type: "Swedish Beast", price: 300000, owned: false, speed: 110, acceleration: 100, handling: 85, power: 800, weight: 1180, tier: 5, rarity: "Mythic" }
+        ];
+        
+        // Add upgrade levels to each car
+        cars.forEach(car => {
+            car.engineLevel = 0;
+            car.turboLevel = 0;
+            car.suspensionLevel = 0;
+            car.tiresLevel = 0;
+            car.nitrousLevel = 0;
+            car.weightReduction = 0;
+        });
+        
+        // Canvas setup
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const minimapCanvas = document.getElementById('minimapCanvas');
+        const minimapCtx = minimapCanvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Enhanced player car physics
+        let playerCar = {
+            x: canvas.width / 2,
+            y: canvas.height * 0.8,
+            speed: 0,
+            maxSpeed: 12,
+            acceleration: 0.4,
+            rotation: 0,
+            width: 32,
+            height: 16,
+            gear: 1,
+            rpm: 0,
+            nitrous: 100,
+            drift: 0,
+            grip: 1
+        };
+        
+        // Enhanced AI cars with different behaviors
+        let aiCars = [];
+        for(let i = 0; i < 8; i++) {
+            aiCars.push({
+                x: Math.random() * (canvas.width - 100) + 50,
+                y: Math.random() * canvas.height * 0.6,
+                speed: 3 + Math.random() * 4,
+                maxSpeed: 6 + Math.random() * 4,
+                rotation: 0,
+                width: 32,
+                height: 16,
+                color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+                behavior: Math.random() > 0.5 ? 'aggressive' : 'defensive',
+                carIndex: Math.floor(Math.random() * 8)
+            });
+        }
+        
+        // Track/Environment
+        let roadLines = [];
+        let buildings = [];
+        let streetLights = [];
+        
+        // Initialize environment
+        function initEnvironment() {
+            // Create road markings
+            for(let i = 0; i < 50; i++) {
+                roadLines.push({
+                    x: canvas.width * 0.5,
+                    y: i * 50,
+                    width: 4,
+                    height: 20
+                });
+            }
+            
+            // Create buildings
+            for(let i = 0; i < 20; i++) {
+                buildings.push({
+                    x: Math.random() * canvas.width * 0.3,
+                    y: Math.random() * canvas.height,
+                    width: 40 + Math.random() * 60,
+                    height: 60 + Math.random() * 100,
+                    color: `hsl(${200 + Math.random() * 60}, 30%, ${20 + Math.random() * 20}%)`
+                });
+                
+                buildings.push({
+                    x: canvas.width * 0.7 + Math.random() * canvas.width * 0.3,
+                    y: Math.random() * canvas.height,
+                    width: 40 + Math.random() * 60,
+                    height: 60 + Math.random() * 100,
+                    color: `hsl(${200 + Math.random() * 60}, 30%, ${20 + Math.random() * 20}%)`
+                });
+            }
+            
+            // Create street lights
+            for(let i = 0; i < 15; i++) {
+                streetLights.push({
+                    x: canvas.width * 0.2 - 10,
+                    y: i * 80,
+                    glowIntensity: Math.random()
+                });
+                
+                streetLights.push({
+                    x: canvas.width * 0.8 + 10,
+                    y: i * 80,
+                    glowIntensity: Math.random()
+                });
+            }
+        }
+        
+        // Input handling
+        const keys = {};
+        
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            if(e.key === 'Escape') {
+                if(gameState.inRace) {
+                    gameState.inRace = false;
+                    showMainMenu();
+                }
+            }
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+        
+        // Game loop
+        function gameLoop() {
+            if(gameState.inRace) {
+                updateGame();
+                drawGame();
+                updateMinimap();
+            }
+            requestAnimationFrame(gameLoop);
+        }
+        
+        function updateGame() {
+            const currentCar = cars[gameState.currentCar];
+            const carPower = currentCar.power + (currentCar.engineLevel * 20) + (currentCar.turboLevel * 30);
+            const carWeight = currentCar.weight - (currentCar.weightReduction * 50);
+            
+            playerCar.maxSpeed = 8 + (carPower / carWeight) * 0.02;
+            playerCar.acceleration = 0.2 + (carPower / carWeight) * 0.001;
+            
+            // Enhanced input handling
+            if(keys['ArrowUp']) {
+                playerCar.speed = Math.min(playerCar.speed + playerCar.acceleration, playerCar.maxSpeed);
+                playerCar.rpm = Math.min(playerCar.rpm + 50, 8000);
+            } else if(keys['ArrowDown']) {
+                playerCar.speed = Math.max(playerCar.speed - playerCar.acceleration * 1.5, -playerCar.maxSpeed * 0.6);
+                playerCar.rpm = Math.max(playerCar.rpm - 30, 800);
+            } else {
+                playerCar.speed *= 0.96; // Enhanced friction
+                playerCar.rpm = Math.max(playerCar.rpm - 20, 800);
+            }
+            
+            // Nitrous boost
+            if(keys['Shift'] && playerCar.nitrous > 0 && playerCar.speed > 2) {
+                playerCar.speed = Math.min(playerCar.speed * 1.1, playerCar.maxSpeed * 1.3);
+                playerCar.nitrous -= 0.5;
+                gameState.nitrous = playerCar.nitrous;
+            } else if(playerCar.nitrous < 100) {
+                playerCar.nitrous += 0.1;
+                gameState.nitrous = playerCar.nitrous;
+            }
+            
+            // Handbrake
+            if(keys[' ']) {
+                playerCar.speed *= 0.9;
+                playerCar.drift += 0.1;
+            } else {
+                playerCar.drift *= 0.9;
+            }
+            
+            // Enhanced steering
+            const steerStrength = 0.04 * (playerCar.speed / playerCar.maxSpeed) * (1 + currentCar.handling * 0.01);
+            if(keys['ArrowLeft']) {
+                playerCar.rotation -= steerStrength;
+            }
+            if(keys['ArrowRight']) {
+                playerCar.rotation += steerStrength;
+            }
+            
+            // Gear calculation
+            playerCar.gear = Math.min(6, Math.max(1, Math.floor(Math.abs(playerCar.speed) / 2) + 1));
+            
+            // Update player position
+            playerCar.x += Math.sin(playerCar.rotation) * playerCar.speed;
+            playerCar.y -= Math.cos(playerCar.rotation) * playerCar.speed;
+            
+            // Enhanced boundary checking
+            playerCar.x = Math.max(canvas.width * 0.15, Math.min(canvas.width * 0.85, playerCar.x));
+            playerCar.y = Math.max(20, Math.min(canvas.height - 20, playerCar.y));
+            
+            // Update AI cars with enhanced behavior
+            aiCars.forEach(car => {
+                if(car.behavior === 'aggressive') {
+                    car.speed = Math.min(car.speed + 0.1, car.maxSpeed);
+                    // Try to get closer to player
+                    if(Math.abs(car.x - playerCar.x) > 50) {
+                        car.x += (playerCar.x - car.x) * 0.002;
+                    }
+                } else {
+                    car.speed = Math.min(car.speed + 0.05, car.maxSpeed * 0.8);
+                }
+                
+                car.y += car.speed;
+                car.x += Math.sin(Date.now() * 0.001 + car.x * 0.01) * (car.behavior === 'aggressive' ? 1 : 0.5);
+                
+                if(car.y > canvas.height + 100) {
+                    car.y = -100;
+                    car.x = canvas.width * 0.2 + Math.random() * canvas.width * 0.6;
+                    car.carIndex = Math.floor(Math.random() * 8);
+                }
+            });
+            
+            // Update environment
+            roadLines.forEach(line => {
+                line.y += playerCar.speed * 0.5;
+                if(line.y > canvas.height + 50) {
+                    line.y = -50;
+                }
+            });
+            
+            buildings.forEach(building => {
+                building.y += playerCar.speed * 0.2;
+                if(building.y > canvas.height + building.height) {
+                    building.y = -building.height;
+                }
+            });
+            
+            streetLights.forEach(light => {
+                light.y += playerCar.speed * 0.3;
+                light.glowIntensity = 0.5 + Math.sin(Date.now() * 0.01) * 0.3;
+                if(light.y > canvas.height + 20) {
+                    light.y = -20;
+                }
+            });
+            
+            // Update race progress
+            gameState.raceProgress = Math.min(100, gameState.raceProgress + Math.abs(playerCar.speed) * 0.1);
+            
+            // Update UI
+            updateGameUI();
+        }
+        
+        function drawGame() {
+            // Clear with night sky gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#001122');
+            gradient.addColorStop(0.3, '#002244');
+            gradient.addColorStop(1, '#000511');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw buildings
+            buildings.forEach(building => {
+                ctx.fillStyle = building.color;
+                ctx.fillRect(building.x, building.y, building.width, building.height);
+                
+                // Building windows
+                ctx.fillStyle = '#ffff88';
+                for(let i = 0; i < building.width / 15; i++) {
+                    for(let j = 0; j < building.height / 20; j++) {
+                        if(Math.random() > 0.7) {
+                            ctx.fillRect(building.x + i * 15 + 2, building.y
